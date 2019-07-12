@@ -12,14 +12,15 @@ export const AppContext = React.createContext({
 function App() {
   const [data, setData] = useState({})
 
+  const dataUpdater = async () => {
+    const data = await fetchData(process.env.REACT_APP_API_ENDPOINT)
+    const user = data.results[0]
+
+    setData(user)
+  }
+
   useEffect(() => {
-    const interval = setInterval(async () => {
-      const data = await fetchData(process.env.REACT_APP_API_ENDPOINT)
-      const user = data.results[0]
-
-      setData(user)
-    }, 2000)
-
+    const interval = setInterval(dataUpdater, 2000)
     return () => clearInterval(interval)
   })
 

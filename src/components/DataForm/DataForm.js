@@ -10,12 +10,16 @@ import fieldShape from './fieldShape'
 function DataForm() {
   const data = useContext(AppContext)
 
+  if (!data) {
+    return
+  }
+
   const fields = mapDataToFormFields(data)
 
   return (
     <form>
       {fields.map(field => (
-        <FieldManager field={field} />
+        <FieldManager key={field.name} field={field} />
       ))}
     </form>
   )

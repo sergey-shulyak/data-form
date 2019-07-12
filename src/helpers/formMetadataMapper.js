@@ -1,40 +1,39 @@
 import { Field } from '../entities/Field'
+import isUrl from 'is-url'
 
 function mapDataToFormFields(data, indentLevel = 0) {
   const fields = []
 
-  for (let [key, value] of Object.entries(data)) {
-    const fieldType = typeof value
+  if (!data) {
+    return []
+  }
 
-    switch (fieldType) {
+  for (let [key, value] of Object.entries(data)) {
+    let type = typeof value
+    let subFields
+
+    switch (type) {
       case 'string':
-      case 'number':
-        fields.push(
-          new Field({
-            name: key,
-            type: fieldType,
-            value,
-            indentLevel,
-            children: null,
-          })
-        )
+        if (isUrl(value)) {
+          type = 'url'
+        }
         break
       case 'object':
-        const children = mapDataToFormFields(value, indentLevel + 1)
-
-        fields.push(
-          new Field({
-            name: key,
-            value: null,
-            type: fieldType,
-            indentLevel,
-            children,
-          })
-        )
+        subFields = mapDataToFormFields(value, indentLevel + 1)
         break
       default:
-        return
+        break
     }
+
+    fields.push(
+      new Field({
+        name: key,
+        value: value || null,
+        type,
+        indentLevel,
+        fields: subFields || null,
+      })
+    )
   }
 
   return fields
