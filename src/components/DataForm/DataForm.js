@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
 
 import FieldManager from './Fields/FieldManager'
+import { AppContext } from '../App'
+import { mapDataToFormFields } from '../../helpers/formMetadataMapper'
 
-function DataForm(props) {
-  const { fields } = props
+import fieldShape from './fieldShape'
+
+function DataForm() {
+  const data = useContext(AppContext)
+
+  const fields = mapDataToFormFields(data)
 
   return (
     <form>
@@ -12,6 +19,10 @@ function DataForm(props) {
       ))}
     </form>
   )
+}
+
+DataForm.propTypes = {
+  fields: PropTypes.arrayOf(fieldShape),
 }
 
 export default DataForm

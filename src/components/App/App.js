@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Layout from '../Layout/Layout'
 
 import { fetchData } from '../../api'
 
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <AppContext.Provider value={data}>
-        <p>Hello</p>
+        <Layout />
       </AppContext.Provider>
     </div>
   )
