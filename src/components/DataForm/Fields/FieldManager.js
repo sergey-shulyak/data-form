@@ -5,7 +5,6 @@ import FieldObject from './FieldObject'
 import FieldString from './FieldString'
 import FieldNumber from './FieldNumber'
 import FieldUrl from './FieldUrl'
-import fieldShape from '../fieldShape'
 
 import styles from './Field.module.css'
 
@@ -16,14 +15,14 @@ const components = {
   url: FieldUrl,
 }
 
-function FieldManager({ field }) {
+function FieldManager({ field, handleChange }) {
   const FieldComponent = components[field.meta.type]
 
   return (
     <div
       className={styles.field}
       style={{
-        marginLeft: `${field.meta.indentLevel}rem`,
+        marginLeft: `${2 * field.meta.indentLevel}rem`,
       }}
     >
       <div
@@ -32,13 +31,9 @@ function FieldManager({ field }) {
           background: Color('#095383').lighten(0.5 * field.meta.indentLevel),
         }}
       />
-      <FieldComponent {...field} />
+      <FieldComponent {...field} handleChange={handleChange} />
     </div>
   )
-}
-
-FieldManager.propTypes = {
-  field: fieldShape,
 }
 
 export default FieldManager

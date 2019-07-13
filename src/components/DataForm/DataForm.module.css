@@ -1,0 +1,14 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonSubmit {
+  width: 100%;
+  height: 30px;
+
+  background: #49abe8;
+  color: white;
+  font-weight: bold;
+  border: none;
+}

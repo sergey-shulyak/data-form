@@ -1,17 +1,11 @@
 import React from 'react'
-import FieldManager from './FieldManager'
+
+import styles from './Field.module.css'
 
 function FieldObject(props) {
-  const { name, meta } = props
+  const { label } = props
 
-  return (
-    <label>
-      {name}
-      {meta.fields.map(field => (
-        <FieldManager field={field} />
-      ))}
-    </label>
-  )
+  return <label className={styles.label}>{label}</label>
 }
 
 export default FieldObject

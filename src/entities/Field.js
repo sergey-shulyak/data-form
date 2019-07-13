@@ -1,13 +1,14 @@
 export class Field {
-  constructor({ name, type, value, indentLevel, fields }) {
+  constructor({ label, name, type, value, indentLevel, parent }) {
+    this.label = label
     this.name = name
     this.value = value
 
     this.meta = {
       type,
       indentLevel,
-      fields,
       hasChanged: false,
+      parent,
     }
   }
 }

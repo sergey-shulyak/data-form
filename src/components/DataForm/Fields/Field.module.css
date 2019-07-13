@@ -1,9 +1,48 @@
 .field {
   display: flex;
+  margin: 1rem;
+  /* align-items: center; */
+}
+
+.input {
+  margin-left: 0.5rem;
+  height: 20px;
 }
 
 .nestIndicator {
   width: 20px;
   height: 20px;
   margin-right: 1rem;
+}
+
+.numberModifiersContainer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.numberModifierButton {
+  height: 12px;
+  border: none;
+  background: lightgrey;
+  color: black;
+  font-size: 5pt;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mediaContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.media {
+  margin-top: 1rem;
 }

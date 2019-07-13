@@ -5,6 +5,7 @@ export async function fetchData(url) {
 
 export async function sendData(url, data) {
   await fetch(url, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
