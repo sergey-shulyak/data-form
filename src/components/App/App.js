@@ -24,7 +24,7 @@ function App() {
   }
 
   useEffect(() => {
-    const interval = setInterval(dataUpdater, 2000)
+    const interval = setInterval(dataUpdater, 1000)
     return () => clearInterval(interval)
   })
 
